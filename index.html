@@ -30,7 +30,7 @@
 
   <h2>Cómo se usan y guardan</h2>
   <ul>
-    <li>El token de acceso de cada usuario se guarda en el equipo donde corre la herramienta, no se muestra a nadie y solo se usa para operar sobre su propio canal. Nunca se comparte con otros usuarios.</li>
+    <li>El token de acceso de cada usuario se guarda cifrado (AES-256-GCM, con la clave guardada aparte) en el equipo donde corre la herramienta, no se muestra a nadie y solo se usa para operar sobre su propio canal. Nunca se comparte con otros usuarios.</li>
     <li>Las estadísticas de cada canal se guardan solo para mostrarle a su dueño la evolución del canal, y se borran automáticamente a los 30 días.</li>
     <li>Los videos se arman a partir de material del usuario o de transmisiones públicas de creadores que lo autorizaron, siempre con crédito. Ese material no proviene de la API de YouTube. Cada usuario es responsable de tener los derechos de lo que publica.</li>
     <li>No se venden, comparten ni muestran datos a nadie más. No se usan cookies de seguimiento ni publicidad.</li>
@@ -44,7 +44,7 @@
   <p>Esta herramienta usa los Servicios de API de YouTube. Al usarla también rigen los <a href="https://www.youtube.com/t/terms">Términos del Servicio de YouTube</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</p>
 
   <h2>English summary</h2>
-  <p>media-app records streams, detects highlights and uploads short clips to the YouTube channel of the user who connected it, and reads that channel's own statistics. It is used today by the XENEIZE CLIPS channel and is offered to other creators, each connecting only their own channel. Each user's token is kept on the machine running the tool, never shown to anyone and used only for their own channel; statistics are deleted automatically after 30 days, and nothing is shared or sold. The in-app "Disconnect YouTube and delete data" button revokes the token and deletes all stored data. Access can also be revoked at any time at myaccount.google.com/permissions. This tool uses YouTube API Services; the YouTube Terms of Service and the Google Privacy Policy apply.</p>
+  <p>media-app records streams, detects highlights and uploads short clips to the YouTube channel of the user who connected it, and reads that channel's own statistics. It is used today by the XENEIZE CLIPS channel and is offered to other creators, each connecting only their own channel. Each user's token is stored encrypted (AES-256-GCM, key kept separately) on the machine running the tool, never shown to anyone and used only for their own channel; statistics are deleted automatically after 30 days, and nothing is shared or sold. The in-app "Disconnect YouTube and delete data" button revokes the token and deletes all stored data. Access can also be revoked at any time at myaccount.google.com/permissions. This tool uses YouTube API Services; the YouTube Terms of Service and the Google Privacy Policy apply.</p>
 
   <h2>Contacto</h2>
   <p>A través del canal de YouTube XENEIZE CLIPS. Ver también los <a href="terminos.html">Términos de uso</a>.</p>
