@@ -26,6 +26,9 @@
   <ul>
     <li>Permiso para subir videos al canal que el usuario conectó (YouTube Data API, <code>youtube.upload</code>).</li>
     <li>Lectura de ese mismo canal: nombre, cantidad de suscriptores y vistas, likes y comentarios de sus videos (<code>youtube.readonly</code>).</li>
+    <li><strong>TikTok</strong> (si el usuario lo conecta): nombre y foto de la cuenta (<code>user.info.basic</code>), subir y publicar videos que el usuario aprueba (<code>video.upload</code>, <code>video.publish</code>) y leer sus videos públicos para mostrar las vistas (<code>video.list</code>).</li>
+    <li><strong>Instagram</strong> (si el usuario lo conecta): datos básicos de la cuenta profesional (<code>instagram_business_basic</code>) y publicar Reels (<code>instagram_business_content_publish</code>).</li>
+    <li><strong>Facebook</strong> (si el usuario lo conecta): las páginas que elige compartir y publicar Reels en ellas (<code>pages_show_list</code>, <code>pages_manage_posts</code>, <code>pages_read_engagement</code>, <code>publish_video</code>).</li>
   </ul>
 
   <h2>Cómo se usan y guardan</h2>
@@ -40,11 +43,14 @@
   <p>Desde <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> se puede quitar el acceso de ShortSolo en cualquier momento. Al hacerlo, la herramienta deja de poder subir o leer datos.</p>
   <p>Además, en la propia herramienta (Conectores → Cuenta y privacidad) el botón <strong>"Desconectar YouTube y borrar los datos"</strong> revoca el acceso en Google y borra el token y todas las estadísticas guardadas.</p>
 
+  <h2>Borrado de datos</h2>
+  <p>Para borrar tus datos: en ShortSolo, <strong>Cuenta</strong> → desconectá cada red (YouTube, TikTok, Instagram, Facebook); eso revoca o elimina los tokens y borra las estadísticas guardadas de esa cuenta. También podés quitar el acceso desde cada red (Google: myaccount.google.com/permissions; TikTok: Configuración → Seguridad → Apps y servicios; Instagram/Facebook: Configuración → Apps y sitios web) o pedir el borrado completo a <a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>; lo hacemos dentro de los 30 días.</p>
+
   <h2>Servicios de terceros</h2>
-  <p>Esta herramienta usa los Servicios de API de YouTube. Al usarla también rigen los <a href="https://www.youtube.com/t/terms">Términos del Servicio de YouTube</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</p>
+  <p>Esta herramienta usa los Servicios de API de YouTube, la API de TikTok (Login Kit y Content Posting API) y las APIs de Meta (Instagram y Facebook). Al usarla también rigen los <a href="https://www.youtube.com/t/terms">Términos del Servicio de YouTube</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</p>
 
   <h2>English summary</h2>
-  <p>ShortSolo records streams, detects highlights and uploads short clips to the YouTube channel of the user who connected it, and reads that channel's own statistics. Its first user is the XENEIZE CLIPS channel and is offered to other creators, each connecting only their own channel. Each user's token is stored encrypted (AES-256-GCM, key kept separately) on the machine running the tool, never shown to anyone and used only for their own channel; statistics are deleted automatically after 30 days, and nothing is shared or sold. The in-app "Disconnect YouTube and delete data" button revokes the token and deletes all stored data. Access can also be revoked at any time at myaccount.google.com/permissions. This tool uses YouTube API Services; the YouTube Terms of Service and the Google Privacy Policy apply.</p>
+  <p>ShortSolo records streams, detects highlights and uploads short clips to the YouTube channel of the user who connected it, and reads that channel's own statistics. Its first user is the XENEIZE CLIPS channel and is offered to other creators, each connecting only their own channel. Each user's token is stored encrypted (AES-256-GCM, key kept separately) on the machine running the tool, never shown to anyone and used only for their own channel; statistics are deleted automatically after 30 days, and nothing is shared or sold. The in-app "Disconnect YouTube and delete data" button revokes the token and deletes all stored data. Access can also be revoked at any time at myaccount.google.com/permissions. This tool uses YouTube API Services, the TikTok API and Meta's Instagram/Facebook APIs; users can delete their data by disconnecting each network in Account settings or by emailing soporte@shortsolo.com (see "Borrado de datos"); the YouTube Terms of Service and the Google Privacy Policy apply.</p>
 
   <h2>Contacto</h2>
   <p><a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>. Ver también los <a href="terminos.html">Términos de uso</a>.</p>
