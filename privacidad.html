@@ -4,17 +4,48 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Política de privacidad · ShortSolo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg: #ffffff; --fg: #1a1a1a; --muted: #555; --accent: #0b3d91; }
-  @media (prefers-color-scheme: dark) { :root { --bg: #111418; --fg: #eceff3; --muted: #a8b0ba; --accent: #f5c400; } }
-  body { margin: 0; background: var(--bg); color: var(--fg); font: 16px/1.6 system-ui, sans-serif; }
-  main { max-width: 720px; margin: 0 auto; padding: 32px 16px 64px; }
-  h1 { font-size: 1.6rem; margin-bottom: 4px; }
-  h2 { font-size: 1.1rem; margin-top: 28px; color: var(--accent); }
-  p, li { color: var(--fg); } small { color: var(--muted); }
+  :root { --paper: #f2f3ef; --panel: #ffffff; --ink: #17191c; --graphite: #5d636b; --rule: #d9dcd4; --signal: #f2a20c; }
+  @media (prefers-color-scheme: dark) {
+    :root { --paper: #15171a; --panel: #1c1f23; --ink: #eceee9; --graphite: #a3a9b1; --rule: #2e3237; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.6 "Schibsted Grotesk", system-ui, sans-serif; }
+  a { color: var(--ink); text-underline-offset: 3px; text-decoration-color: var(--rule); }
+  a:hover { text-decoration-color: var(--signal); }
+  .site-header { border-bottom: 1px solid var(--rule); background: var(--paper); position: sticky; top: 0; z-index: 10; }
+  .site-header nav { max-width: 880px; margin: 0 auto; padding: 14px 16px; display: flex; align-items: center; gap: 22px; }
+  .site-brand { display: flex; align-items: center; gap: 10px; font-weight: 800; font-size: 18px; letter-spacing: -0.02em; text-decoration: none; margin-right: auto; }
+  .site-mark { width: 28px; height: 28px; border-radius: 7px; background: var(--ink); position: relative; flex: none; }
+  .site-mark::before { content: ""; position: absolute; left: 11px; top: 8px; border-style: solid; border-width: 6px 0 6px 9px; border-color: transparent transparent transparent var(--paper); }
+  .site-mark::after { content: ""; position: absolute; left: 7px; right: 7px; bottom: -5px; height: 3px; border-radius: 2px; background: var(--signal); }
+  .site-links { display: flex; gap: 18px; font-weight: 500; }
+  .site-links a { text-decoration: none; color: var(--graphite); }
+  .site-links a:hover, .site-links a[aria-current="page"] { color: var(--ink); }
+  .site-links a[aria-current="page"] { box-shadow: inset 0 -2px 0 var(--signal); }
+  .site-cta { background: var(--ink); color: var(--paper); text-decoration: none; font-weight: 650; padding: 8px 16px; border-radius: 7px; }
+  .site-cta:hover { opacity: .9; }
+  main { max-width: 720px; margin: 0 auto; padding: 40px 16px 64px; }
+  h1 { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 10px; }
+  h2 { font-size: 1.15rem; font-weight: 700; margin-top: 32px; letter-spacing: -0.01em; }
+  p, li { color: var(--ink); } small { color: var(--graphite); }
+  code { font-size: .9em; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 4px; }
+  .site-footer { border-top: 1px solid var(--rule); color: var(--graphite); font-size: 14px; }
+  .site-footer div { max-width: 880px; margin: 0 auto; padding: 20px 16px; display: flex; gap: 18px; flex-wrap: wrap; }
+  @media (max-width: 560px) { .site-links { display: none; } h1 { font-size: 1.7rem; } }
 </style>
+
 </head>
 <body>
+<header class="site-header">
+  <nav aria-label="Principal">
+    <a class="site-brand" href="/"><span class="site-mark" aria-hidden="true"></span>ShortSolo</a>
+    <div class="site-links"><a href="/">Inicio</a><a href="/privacidad.html" aria-current="page">Privacidad</a><a href="/terminos.html">Términos</a></div>
+    <a class="site-cta" href="https://app.shortsolo.com">Entrar</a>
+  </nav>
+</header>
 <main>
   <h1>Política de privacidad / Privacy Policy</h1>
   <small>ShortSolo · Última actualización: 16 de noviembre de 2026</small>
@@ -55,5 +86,6 @@
   <h2>Contacto</h2>
   <p><a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>. Ver también los <a href="terminos.html">Términos de uso</a>.</p>
 </main>
+<footer class="site-footer"><div><span>© 2026 ShortSolo</span><a href="/privacidad.html">Privacidad</a><a href="/terminos.html">Términos</a><a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a></div></footer>
 </body>
 </html>
