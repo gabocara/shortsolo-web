@@ -29,6 +29,7 @@
   .site-cta:hover { opacity: .9; }
   main { max-width: 720px; margin: 0 auto; padding: 40px 16px 64px; }
   h1 { font-size: 2.1rem; font-weight: 800; letter-spacing: -0.03em; line-height: 1.08; margin: 0 0 10px; }
+  h3 { font-size: 1.02rem; font-weight: 700; margin-top: 24px; }
   h2 { font-size: 1.15rem; font-weight: 700; margin-top: 32px; letter-spacing: -0.01em; }
   p, li { color: var(--ink); } small { color: var(--graphite); }
   code { font-size: .9em; background: var(--panel); border: 1px solid var(--rule); border-radius: 4px; padding: 1px 4px; }
@@ -50,42 +51,132 @@
 </header>
 <main>
   <h1>Política de privacidad / Privacy Policy</h1>
-  <small>ShortSolo · Última actualización: 16 de noviembre de 2026</small>
+  <small>ShortSolo · Última actualización: 23 de noviembre de 2026 · <a href="#en">English version below</a></small>
 
   <h2>Qué es</h2>
-  <p>ShortSolo es una herramienta que graba transmisiones, detecta los mejores momentos y los publica como clips cortos en el canal de YouTube <strong>del propio usuario</strong>. Su primer usuario es el canal XENEIZE CLIPS; también se ofrece a otros creadores, que conectan su propio canal. Cada usuario solo puede publicar en el canal que él mismo autorizó.</p>
+  <p>ShortSolo es una herramienta para creadores: graba transmisiones, detecta con IA los mejores momentos, arma clips verticales cortos y, con la aprobación del usuario, los publica en <strong>sus propias</strong> cuentas (YouTube, TikTok, Instagram, Facebook) y le muestra cómo rinden. Su primer usuario es el canal XENEIZE CLIPS y está en beta privada para otros creadores, que conectan solo sus propios canales. Cada usuario solo puede publicar en las cuentas que él mismo autorizó y solo ve sus propios datos.</p>
 
-  <h2>Datos a los que accede</h2>
+  <h2>1. Datos de Google a los que accede</h2>
   <ul>
-    <li>Permiso para subir videos al canal que el usuario conectó (YouTube Data API, <code>youtube.upload</code>).</li>
-    <li>Lectura de ese mismo canal: nombre, cantidad de suscriptores y vistas, likes y comentarios de sus videos (<code>youtube.readonly</code>).</li>
-    <li><strong>TikTok</strong> (si el usuario lo conecta): nombre y foto de la cuenta (<code>user.info.basic</code>), publicar los videos que el usuario aprueba (<code>video.publish</code>) y leer sus videos públicos para mostrar las vistas (<code>video.list</code>).</li>
-    <li><strong>Instagram</strong> (si el usuario lo conecta): datos básicos de la cuenta profesional (<code>instagram_business_basic</code>) y publicar Reels (<code>instagram_business_content_publish</code>).</li>
-    <li><strong>Facebook</strong> (si el usuario lo conecta): las páginas que elige compartir y publicar Reels en ellas (<code>pages_show_list</code>, <code>pages_manage_posts</code>, <code>pages_read_engagement</code>).</li>
+    <li><strong>Inicio de sesión con Google</strong> (<code>openid</code>, <code>email</code>, <code>profile</code>): nombre, mail y foto, para crear la cuenta e identificar al usuario.</li>
+    <li><strong>Subir videos</strong> (<code>youtube.upload</code>): solo para publicar, con <code>videos.insert</code>, los clips que el usuario aprueba (o que su piloto automático, configurado por él, aprueba) en el canal que conectó. ShortSolo no edita ni borra videos existentes.</li>
+    <li><strong>Lectura del propio canal</strong> (<code>youtube.readonly</code>): ID, nombre y foto del canal; cantidad de suscriptores y vistas; y de sus propios videos: título, fecha de publicación, duración, vistas, likes y cantidad de comentarios (<code>channels.list</code>, <code>playlistItems.list</code>, <code>videos.list</code>). No lee el texto de los comentarios, mensajes, suscriptores individuales ni datos de otros canales.</li>
   </ul>
 
-  <h2>Cómo se usan y guardan</h2>
+  <h2>2. Cómo se usan</h2>
   <ul>
-    <li>El token de acceso de cada usuario se guarda cifrado (AES-256-GCM, con la clave guardada aparte) en el equipo donde corre la herramienta, no se muestra a nadie y solo se usa para operar sobre su propio canal. Nunca se comparte con otros usuarios.</li>
-    <li>Las estadísticas de cada canal se guardan solo para mostrarle a su dueño la evolución del canal, y se borran automáticamente a los 30 días.</li>
-    <li>Los videos se arman a partir de material del usuario o de transmisiones públicas de creadores que lo autorizaron, siempre con crédito. Ese material no proviene de la API de YouTube. Cada usuario es responsable de tener los derechos de lo que publica.</li>
-    <li>No se venden, comparten ni muestran datos a nadie más. No se usan cookies de seguimiento ni publicidad.</li>
+    <li>Mostrar el canal conectado en la sección Cuenta y publicar ahí los clips aprobados.</li>
+    <li>Mostrarle al dueño un tablero privado con la evolución de su canal y de cada video.</li>
+    <li>Avisos al celular del propio usuario (si instala la app y los acepta): "short publicado", "falló una publicación" y un resumen de vistas de su canal.</li>
+    <li>Marcar solo como "subido" un clip cuando aparece en su canal (comparando título y duración).</li>
+    <li>Mejorar la elección de momentos para ese mismo usuario: la IA que puntúa los momentos recibe un resumen corto de qué clips del propio canal anduvieron mejor y peor (título y vistas normalizadas), para elegir mejores clips para ese canal.</li>
+  </ul>
+  <p>Los datos de Google <strong>solo</strong> se usan para dar o mejorar estas funciones visibles para el propio usuario. No se usan para publicidad, perfiles de marketing, evaluación crediticia ni ningún otro fin, y no se venden.</p>
+
+  <h2>3. Con quién se comparten</h2>
+  <ul>
+    <li><strong>Nadie más ve los datos de un usuario</strong>: ni otros usuarios de ShortSolo ni terceros.</li>
+    <li>Solo pasan por estos proveedores, que actúan por cuenta de ShortSolo y únicamente para dar la función indicada:
+      <ul>
+        <li><strong>OpenAI</strong> (modelo de IA que puntúa los momentos): el resumen de títulos y vistas del propio canal descrito arriba. No se le manda el token, el mail ni datos personales.</li>
+        <li><strong>Google Firebase Cloud Messaging</strong>: el texto de los avisos al celular del usuario (por ejemplo, vistas del día y el título del video que más creció).</li>
+        <li><strong>Cloudflare</strong>: conexión cifrada (HTTPS) entre el navegador y el servidor.</li>
+      </ul>
+    </li>
+    <li>Los datos de Google no se usan para entrenar modelos de IA ni se transfieren a servicios que los usen para entrenarlos.</li>
+    <li>Solo se revelarían si lo exige la ley, o con el consentimiento expreso del usuario.</li>
   </ul>
 
-  <h2>Cómo revocar el acceso</h2>
-  <p>Desde <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a> se puede quitar el acceso de ShortSolo en cualquier momento. Al hacerlo, la herramienta deja de poder subir o leer datos.</p>
-  <p>Además, en la propia herramienta (Conectores → Cuenta y privacidad) el botón <strong>"Desconectar YouTube y borrar los datos"</strong> revoca el acceso en Google y borra el token y todas las estadísticas guardadas.</p>
+  <h2>4. Cómo se protegen</h2>
+  <ul>
+    <li>Los tokens de acceso se guardan cifrados (AES-256-GCM, con la clave guardada aparte), nunca se muestran y solo se usan para operar sobre la cuenta de su dueño.</li>
+    <li>Toda conexión con la app es por HTTPS. El servidor es privado, sin puertos abiertos al público, y solo lo administra el equipo de ShortSolo.</li>
+    <li>Para entrar a la app hace falta iniciar sesión con Google y estar invitado. Cada usuario solo accede a sus propios datos.</li>
+  </ul>
 
-  <h2>Borrado de datos</h2>
-  <p>Para borrar tus datos: en ShortSolo, <strong>Cuenta</strong> → desconectá cada red (YouTube, TikTok, Instagram, Facebook); eso revoca o elimina los tokens y borra las estadísticas guardadas de esa cuenta. También podés quitar el acceso desde cada red (Google: myaccount.google.com/permissions; TikTok: Configuración → Seguridad → Apps y servicios; Instagram/Facebook: Configuración → Apps y sitios web) o pedir el borrado completo a <a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>; lo hacemos dentro de los 30 días.</p>
+  <h2>5. Cuánto tiempo se guardan y cómo se borran</h2>
+  <ul>
+    <li>Las estadísticas del canal se borran automáticamente a los 30 días. El resumen que usa la IA se recalcula cada 6 horas a partir de ellas.</li>
+    <li>Los tokens se guardan hasta que el usuario desconecta la cuenta o revoca el acceso.</li>
+    <li>En la app, <strong>Cuenta → "Desconectar YouTube y borrar los datos"</strong> revoca el acceso en Google y borra en el momento el token, las estadísticas, el resumen de la IA y los avisos guardados.</li>
+    <li>El acceso también se puede quitar en cualquier momento desde <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+    <li>Para borrar todo (incluida la cuenta de ShortSolo), escribí a <a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>; lo hacemos dentro de los 30 días. Los videos ya publicados quedan en el canal del usuario, que los administra desde YouTube.</li>
+  </ul>
 
-  <h2>Servicios de terceros</h2>
-  <p>Esta herramienta usa los Servicios de API de YouTube, la API de TikTok (Login Kit y Content Posting API) y las APIs de Meta (Instagram y Facebook). Al usarla también rigen los <a href="https://www.youtube.com/t/terms">Términos del Servicio de YouTube</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</p>
+  <h2>6. Otras redes</h2>
+  <ul>
+    <li><strong>TikTok</strong> (si el usuario lo conecta): nombre y foto (<code>user.info.basic</code>), publicar los videos que aprueba (<code>video.publish</code>) y, si se habilita, leer sus videos públicos para mostrar las vistas (<code>video.list</code>).</li>
+    <li><strong>Instagram</strong> (si lo conecta): datos básicos de la cuenta profesional y publicar Reels (<code>instagram_business_basic</code>, <code>instagram_business_content_publish</code>).</li>
+    <li><strong>Facebook</strong> (si lo conecta): las páginas que elige y publicar Reels en ellas (<code>pages_show_list</code>, <code>pages_manage_posts</code>, <code>pages_read_engagement</code>).</li>
+    <li>Se tratan igual que los de Google: cifrados, solo para el propio usuario y borrados al desconectar cada red (TikTok: Configuración → Seguridad → Apps y servicios; Instagram/Facebook: Configuración → Apps y sitios web).</li>
+  </ul>
 
-  <h2>English summary</h2>
-  <p>ShortSolo records streams, detects highlights and uploads short clips to the YouTube channel of the user who connected it, and reads that channel's own statistics. Its first user is the XENEIZE CLIPS channel and is offered to other creators, each connecting only their own channel. Each user's token is stored encrypted (AES-256-GCM, key kept separately) on the machine running the tool, never shown to anyone and used only for their own channel; statistics are deleted automatically after 30 days, and nothing is shared or sold. The in-app "Disconnect YouTube and delete data" button revokes the token and deletes all stored data. Access can also be revoked at any time at myaccount.google.com/permissions. This tool uses YouTube API Services, the TikTok API and Meta's Instagram/Facebook APIs; users can delete their data by disconnecting each network in Account settings or by emailing soporte@shortsolo.com (see "Borrado de datos"); the YouTube Terms of Service and the Google Privacy Policy apply.</p>
+  <h2>7. Contenido de los videos</h2>
+  <p>Los clips se arman con material del propio usuario o de transmisiones públicas de creadores que lo autorizaron, siempre con crédito. Ese material no proviene de las APIs de Google. Cada usuario es responsable de tener los derechos de lo que publica. No se usan cookies de seguimiento ni publicidad.</p>
 
-  <h2>Contacto</h2>
+  <h2>8. Uso limitado</h2>
+  <p>El uso y la transferencia de la información recibida de las APIs de Google cumplen la <a href="https://developers.google.com/terms/api-services-user-data-policy">Política de Datos del Usuario de los Servicios de API de Google</a>, incluidos los requisitos de Uso Limitado. ShortSolo usa los Servicios de API de YouTube: al usarlo rigen los <a href="https://www.youtube.com/t/terms">Términos del Servicio de YouTube</a> y la <a href="https://policies.google.com/privacy">Política de Privacidad de Google</a>.</p>
+
+  <h2 id="en">Privacy Policy (English)</h2>
+  <p>ShortSolo is a tool for creators: it records livestreams, uses AI to find the best moments, builds short vertical clips and, with the user's approval, publishes them to the user's <strong>own</strong> accounts (YouTube, TikTok, Instagram, Facebook) and shows how they perform. Its first user is the XENEIZE CLIPS channel and it is in private beta for other creators, who connect only their own channels. Each user can only publish to accounts they authorized and only sees their own data.</p>
+
+  <h3>1. Google user data we access</h3>
+  <ul>
+    <li><strong>Google Sign-In</strong> (<code>openid</code>, <code>email</code>, <code>profile</code>): name, email and photo, to create the account and identify the user.</li>
+    <li><strong>Upload videos</strong> (<code>youtube.upload</code>): only to publish, via <code>videos.insert</code>, the clips the user approves (or that their own autopilot settings approve) to the channel they connected. ShortSolo never edits or deletes existing videos.</li>
+    <li><strong>Read the user's own channel</strong> (<code>youtube.readonly</code>): channel ID, name and avatar; subscriber and view counts; and for the channel's own videos: title, publish date, duration, views, likes and comment count (<code>channels.list</code>, <code>playlistItems.list</code>, <code>videos.list</code>). We do not read comment text, messages, individual subscribers or any other channel's data.</li>
+  </ul>
+
+  <h3>2. How we use it</h3>
+  <ul>
+    <li>Show the connected channel in Account settings and publish approved clips to it.</li>
+    <li>Show the owner a private dashboard of their channel's and videos' performance.</li>
+    <li>Push notifications to the user's own phone (if they install the app and allow them): "short published", "a publication failed" and a summary of their channel's views.</li>
+    <li>Automatically mark a clip as "uploaded" when it appears on the user's channel (matching title and duration).</li>
+    <li>Improve moment selection for that same user: the AI that scores moments receives a short summary of which clips on the user's own channel performed best and worst (title and normalized views), to pick better clips for that channel.</li>
+  </ul>
+  <p>Google user data is used <strong>only</strong> to provide or improve these user-facing features for the same user. It is never used for advertising, marketing profiles, credit or lending decisions or any other purpose, and it is never sold.</p>
+
+  <h3>3. Data sharing and transfer</h3>
+  <ul>
+    <li><strong>No one else sees a user's data</strong>: neither other ShortSolo users nor third parties.</li>
+    <li>Data only passes through these service providers, acting on ShortSolo's behalf and solely to provide the stated feature:
+      <ul>
+        <li><strong>OpenAI</strong> (AI model that scores moments): the summary of the user's own video titles and views described above. No tokens, email addresses or other personal data are sent.</li>
+        <li><strong>Google Firebase Cloud Messaging</strong>: the text of the notifications sent to the user's own phone (e.g. today's views and the title of the fastest-growing video).</li>
+        <li><strong>Cloudflare</strong>: encrypted HTTPS transport between the browser and the server.</li>
+      </ul>
+    </li>
+    <li>Google user data is not used to develop, improve or train AI/ML models, and is not transferred to services that use it to train AI/ML models.</li>
+    <li>Data is only disclosed if required by law, or with the user's explicit consent.</li>
+  </ul>
+
+  <h3>4. Data protection</h3>
+  <ul>
+    <li>OAuth tokens are stored encrypted (AES-256-GCM, key stored separately), never displayed, and only used to act on their owner's account.</li>
+    <li>All connections to the app use HTTPS. The server is private, with no ports open to the public, and only the ShortSolo team administers it.</li>
+    <li>Access to the app requires Google Sign-In and an invitation. Each user can only access their own data.</li>
+  </ul>
+
+  <h3>5. Data retention and deletion</h3>
+  <ul>
+    <li>Channel statistics are automatically deleted after 30 days. The AI summary is recalculated every 6 hours from them.</li>
+    <li>Tokens are kept until the user disconnects the account or revokes access.</li>
+    <li>In the app, <strong>Account → "Disconnect YouTube and delete data"</strong> revokes access at Google and immediately deletes the token, statistics, AI summary and stored notifications.</li>
+    <li>Access can also be revoked at any time at <a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a>.</li>
+    <li>To delete everything (including the ShortSolo account), email <a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>; we do it within 30 days. Videos already published stay on the user's channel, which they manage in YouTube.</li>
+  </ul>
+
+  <h3>6. Other networks</h3>
+  <p>TikTok (<code>user.info.basic</code>, <code>video.publish</code>, optionally <code>video.list</code>), Instagram (<code>instagram_business_basic</code>, <code>instagram_business_content_publish</code>) and Facebook (<code>pages_show_list</code>, <code>pages_manage_posts</code>, <code>pages_read_engagement</code>) data is only accessed if the user connects them, is handled the same way (encrypted, only for that user) and is deleted when each network is disconnected.</p>
+
+  <h3>7. Video content</h3>
+  <p>Clips are made from the user's own material or from public livestreams of creators who authorized it, always credited. This material does not come from Google APIs. Each user is responsible for holding the rights to what they publish. No tracking or advertising cookies are used.</p>
+
+  <h3>8. Limited Use</h3>
+  <p>ShortSolo's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including the Limited Use requirements. ShortSolo uses YouTube API Services: by using it you agree to the <a href="https://www.youtube.com/t/terms">YouTube Terms of Service</a>, and the <a href="https://policies.google.com/privacy">Google Privacy Policy</a> applies.</p>
+
+  <h2>Contacto / Contact</h2>
   <p><a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a>. Ver también los <a href="terminos.html">Términos de uso</a>.</p>
 </main>
 <footer class="site-footer"><div><span>© 2026 ShortSolo</span><a href="/privacidad.html">Privacidad</a><a href="/terminos.html">Términos</a><a href="mailto:soporte@shortsolo.com">soporte@shortsolo.com</a></div><div class="yt-api"><svg class="yt-mark" viewBox="0 0 28 20" width="28" height="20" aria-hidden="true"><rect width="28" height="20" rx="5" fill="#FF0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg><span>ShortSolo usa los Servicios de API de YouTube (YouTube API Services). Al conectar tu canal aceptás los <a href="https://www.youtube.com/t/terms" rel="noopener">Términos del Servicio de YouTube</a>; tus datos se tratan también según la <a href="https://policies.google.com/privacy" rel="noopener">Política de Privacidad de Google</a>. Podés revocar el acceso en <a href="https://myaccount.google.com/permissions" rel="noopener">myaccount.google.com/permissions</a>.</span></div></footer>
